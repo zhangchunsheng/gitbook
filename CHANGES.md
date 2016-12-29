@@ -2,6 +2,80 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.0
+- **Breaking Changes:** Most plugins and themes should be incompatible with this version
+- GitBook rendering is now done using React, which brings better APIs for plugins and a more interactive website.
+- *Performances*: Installation of plugins is much faster thanks to `ied`
+- *Performances*: Git conrefs are faster over large books
+- *Website Feature:* new default plugin `copy-code` to copy code blocks content in one click
+- *Website Feature:* new default plugin `heading-anchors` to have clickable headings
+- *Website Feature:* `fontsettings` is now only controlling the font size, and can work on multiple themes
+- *Plugin API*: hook `page` can no longer modify the content, only the page's attributes
+- *Plugin API*: plugins can no longer export resources, instead use the `_assets` folder
+
+## 3.2.2
+- Fix catching parsing errors leading to possible missing pages in generated book
+- Rollback markdown parser to `kramed` until `markup-it` is stable enough
+
+## 3.2.1
+- Fix bug on Firefox when navigating to an url containing an hash
+- Update nunjucks to fix JS error when page contains a lot of templating blocks
+
+## 3.2.0
+- Switch markdown parser from `kramed` to `markup-it`
+- Fix support of `|` in tables
+- Fix access to `output.name` in templating
+- Fix i18n for website and PDF
+- Fix minor scrolling issues on website
+- Improve options of default search indexer (keywords, disabling per pages)
+- Improve pertinence of search results
+
+## 3.1.1
+- Fix order of plugins during loading
+- Fix error when using math and conrefs
+- Fix target attribute for external links
+- Fix serve command
+
+## 3.1.0
+- Always load themes after plugins
+- README/Introduction doesn't require to be the first entry in the summary
+- Highlight active entry in summary when scrolling a page with anchors
+- Support empty parts in summary
+
+## 3.0.3
+- Fix redirection in `gitbook serve` when accessing a folder without trailing slash
+- Fix links/annotations for glossary not being correctly resolved
+- Fix regression for supporting uppercase filenames in structure files
+- Fix `gitbook install` when using Git URLs for plugins
+
+## 3.0.2
+- Fix crash for anchor links
+
+## 3.0.1
+- Fix regression in link resolution when contain anchor
+- Fix `structure.<name>` configuration not supporting filenames with dots
+
+## 3.0.0
+- Summary can contain external links and anchors (Fix [#776](https://github.com/GitbookIO/gitbook/issues/776))
+- Summary can contain differents entitled sections
+- Glossary is generated as a normal page
+- Headings are no longer annotated with glossary terms
+- Themes are now published as a plugin, with ability to extend it from the book source
+- `links.sidebar` configuration is no longer supported, use summary sections instead
+- `pdf.headerTemplate` and `pdf.footerTemplate` have been replaced by a template in theme/book: `_layout/ebook/pdf_header.html` and `_layout/ebook/pdf_footer.html`
+- Markdown parser is now using CommonMark
+- Root folder for the book can be specified in the `"root"` property of the `book.json` file
+- Multi-lingual books share assets folder
+- YAML front matter is parsed and can extend page's properties
+- Fix `uk` translation
+- Fix heading ID including dashes
+- Fix error in code highlighting for unknown languages
+- Fix data-uri images being handled as external images
+- Accept SSH url as plugin version
+- Add templating blocks `markdown`, `asciidoc` and `markup`
+- Better search experience
+- Better default theme, more responsive and cleaner
+
 ## 2.6.7
 - Fix bug with filenames including spaces
 - Add Turkish and Catalan translations
